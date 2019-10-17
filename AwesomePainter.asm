@@ -23,29 +23,29 @@ CloseMsg   BYTE "Bye", 0
 
 ErrorTitle  BYTE "Error", 0
 WindowTitle  BYTE "ASM Painter", 0
-WindowClass BYTE "ASMWin", 0; ´°¿ÚÀà£¬Ãû×Ö¿ÉÒÔËæ±ãÖ¸¶¨
+WindowClass BYTE "ASMWin", 0; çª—å£ç±»ï¼Œåå­—å¯ä»¥éšä¾¿æŒ‡å®š
 
 hInstG DWORD ?
 
 ; =================== CODE ======================== =
 .code
-; ³õÊ¼»¯->×¢²á´°¿Ú->´´½¨´°¿Ú->ÏÔÊ¾->ÊÂ¼şÑ­»·
+; åˆå§‹åŒ–->æ³¨å†Œçª—å£->åˆ›å»ºçª—å£->æ˜¾ç¤º->äº‹ä»¶å¾ªç¯
 WinMain PROC hInst : HINSTANCE, hPrevInst : HINSTANCE, nShowCmd : DWORD
 	local MainWin : WNDCLASSEX
 	local hWnd : HWND
 	local msg : MSG
 
-	; ³õÊ¼»¯
+	; åˆå§‹åŒ–
 	.IF !hPrevInst
 		mov MainWin.cbSize, SIZEOF WNDCLASSEX
-		mov MainWin.style, CS_HREDRAW or CS_VREDRAW ; ´Ë´°¿Ú·ç¸ñÊ¹µÃ´°¿Ú³ß´ç¸Ä±äÊ±½«ÖØ»æ
+		mov MainWin.style, CS_HREDRAW or CS_VREDRAW ; æ­¤çª—å£é£æ ¼ä½¿å¾—çª—å£å°ºå¯¸æ”¹å˜æ—¶å°†é‡ç»˜
 		mov MainWin.cbClsExtra, 0
 		mov MainWin.cbWndExtra, 0
 		mov MainWin.lpfnWndProc, OFFSET WndProc
 		mov eax, hInst
 		mov MainWin.hInstance, eax
 
-		; ¼ÓÔØ³ÌĞò¹â±êºÍÍ¼±êµÈ
+		; åŠ è½½ç¨‹åºå…‰æ ‡å’Œå›¾æ ‡ç­‰
 		INVOKE LoadIcon, hInst, IDI_APPLICATION
 		mov MainWin.hIcon, eax
 		mov MainWin.hIconSm, eax
@@ -54,11 +54,11 @@ WinMain PROC hInst : HINSTANCE, hPrevInst : HINSTANCE, nShowCmd : DWORD
 		mov MainWin.hbrBackground, COLOR_WINDOW + 1
 		mov MainWin.lpszClassName, OFFSET WindowClass
 
-		; ¼ÓÔØ²Ëµ¥
-		mov MainWin.lpszMenuName, 0 ; ´°¿ÚÉÏÎŞÓĞ²Ëµ¥
+		; åŠ è½½èœå•
+		mov MainWin.lpszMenuName, 0 ; çª—å£æš‚æ—¶è¿˜æ²¡æœ‰æœ‰èœå•
 
 
-		; ×¢²á´°¿ÚÀà
+		; æ³¨å†Œçª—å£ç±»
 		INVOKE RegisterClassEx, ADDR MainWin
 		.IF eax == 0
 			call ErrorHandler
@@ -66,11 +66,11 @@ WinMain PROC hInst : HINSTANCE, hPrevInst : HINSTANCE, nShowCmd : DWORD
 		.ENDIF
 	.ENDIF
 
-	; ´´½¨³ÌĞò´°¿Ú
-	; ÔÚÕâÀï»á´«µİWM_CREATEĞÅÏ¢
+	; åˆ›å»ºç¨‹åºçª—å£
+	; åœ¨è¿™é‡Œä¼šä¼ é€’WM_CREATEä¿¡æ¯
 	INVOKE CreateWindowEx, 0, ADDR WindowClass,
-	ADDR WindowTitle, MAIN_WINDOW_STYLE, ; MAIN_WINDOW_STYLEÔÚGraphicWin.inc¶¨Òå
-	100, 100, 800, 600, ; ´°¿ÚÄ¬ÈÏ³¤¿íÎ»ÖÃ
+	ADDR WindowTitle, MAIN_WINDOW_STYLE, ; MAIN_WINDOW_STYLEåœ¨GraphicWin.incå®šä¹‰
+	100, 100, 800, 600, ; çª—å£é»˜è®¤é•¿å®½ä½ç½®
 	NULL, NULL, hInst, NULL
 	mov hWnd, eax
 
@@ -79,11 +79,11 @@ WinMain PROC hInst : HINSTANCE, hPrevInst : HINSTANCE, nShowCmd : DWORD
 		jmp  Exit_Program
 	.ENDIF
 
-	; ÏÔÊ¾´°¿Ú£¬µÚÒ»´ÎÏÔÊ¾ĞèÒªËæºóµ÷ÓÃUpdateWindowÁ¢¼´¸üĞÂ
+	; æ˜¾ç¤ºçª—å£ï¼Œç¬¬ä¸€æ¬¡æ˜¾ç¤ºéœ€è¦éšåè°ƒç”¨UpdateWindowç«‹å³æ›´æ–°
 	INVOKE ShowWindow, hWnd, nShowCmd
 	INVOKE UpdateWindow, hWnd
 Message_Loop:
-	; ¿ªÊ¼³ÌĞòÊÂ¼şÑ­»·
+	; å¼€å§‹ç¨‹åºäº‹ä»¶å¾ªç¯
 	; Get next message from the queue.
 	INVOKE GetMessage, ADDR msg, NULL, NULL, NULL
 
@@ -92,7 +92,7 @@ Message_Loop:
 		jmp Exit_Program
 	.ENDIF
 
-	; DispatchMessage½«ÏûÏ¢´«¸øWinProc
+	; DispatchMessageå°†æ¶ˆæ¯ä¼ ç»™WinProc
 	INVOKE TranslateMessage, ADDR msg
 	INVOKE DispatchMessage, ADDR msg
 	jmp Message_Loop
@@ -111,8 +111,8 @@ WndProc PROC uses ebx edi esi,
 
 	.IF eax == WM_CREATE; create window
 		 
-	; ÔÚWM_PAINTÀïÓÃBeginPaintºÍEndPaint°ü¹ü»æÖÆ²Ù×÷
-	; ÔÚWM_PAINTÖ®ÍâĞèÒªÓÃGetDC·½·¨
+	; åœ¨WM_PAINTé‡Œç”¨BeginPaintå’ŒEndPaintåŒ…è£¹ç»˜åˆ¶æ“ä½œ
+	; åœ¨WM_PAINTä¹‹å¤–éœ€è¦ç”¨GetDCæ–¹æ³•
 	.ELSEIF eax == WM_PAINT
 		 INVOKE BeginPaint, hWnd, ADDR ps
 		 mov hDC, eax
@@ -135,7 +135,7 @@ WndProc ENDP
 
 ; ------------------------------------------------------
 ErrorHandler PROC
-; µ±¿ÉÄÜ³öÏÖ´íÎóÊ±£¬µ÷ÓÃ´íÎó´¦Àíº¯ÊıÏÔÊ¾´íÎóĞÅÏ¢
+; å½“å¯èƒ½å‡ºç°é”™è¯¯æ—¶ï¼Œè°ƒç”¨é”™è¯¯å¤„ç†å‡½æ•°æ˜¾ç¤ºé”™è¯¯ä¿¡æ¯
 .data
 	pErrorMsg  DWORD ? ; ptr to error message
 	messageID  DWORD ?
