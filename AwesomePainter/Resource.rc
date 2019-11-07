@@ -1,0 +1,306 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+#include <winresrc.h>
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MAIN MENU
+BEGIN
+    POPUP "File(&F)"
+    BEGIN
+        MENUITEM "Open(&O)\tCtrl+O",            IDM_OPEN
+        MENUITEM "New(&N)\tCtrl+N",             IDM_NEW
+        MENUITEM "Save(&S)\tCtrl+S",            IDM_SAVE
+    END
+    POPUP "Edit(&E)"
+    BEGIN
+        MENUITEM "Redo(&Z)\tCtrl+Z",            IDM_UNDO
+    END
+    POPUP "Canvas(&C)"
+    BEGIN
+        MENUITEM "Clear(&A)\tCtrl+SHIFT+A",     IDM_CLEAR
+        MENUITEM "HFilp(&H)\tCtrl+SHIFT+H",     IDM_FLIPH
+        MENUITEM "VFilp(&V)\tCtrl+SHIFT+V",     IDM_FLIPV
+        MENUITEM "Rotate(&R)\tCtrl+R",          IDM_ROTATION
+        MENUITEM "Resize",                      IDM_CSIZE
+    END
+    POPUP "Tools(&T)"
+    BEGIN
+        MENUITEM "Pen(&P)\tCtrl+P",             IDM_PEN
+        MENUITEM "Brush(&B)\tCtrl+B",           IDM_BRUSH
+        MENUITEM "Text(&T)\tCtrl+T",            IDM_TEXT
+        MENUITEM "Eraser(&E)\tCtrl+E",          IDM_ERASER
+        MENUITEM "Select",                      IDM_SELECTAREA
+        MENUITEM "Bucket",                      IDM_OILPAINT
+        MENUITEM "Straw",                       IDM_SELECTCOLOR
+    END
+    POPUP "Settings(&S)"
+    BEGIN
+        MENUITEM "Pen/Brush/Bucket Color",      IDM_PAINTCOLOR
+        MENUITEM "Pen/Eraser Width",            IDM_PENSIZE
+        MENUITEM "Pen Style",                   IDM_PENTYPE
+        MENUITEM "Brush Style",                 IDM_BRUSHTYPE
+    END
+    POPUP "Shapes(&S)"
+    BEGIN
+        MENUITEM "Line",                        IDM_LINE
+        MENUITEM "Rectangle",                   IDM_RECTANGLE
+        MENUITEM "Ellispe",                     IDM_ELLIPSE
+        MENUITEM "Polygon",                     IDM_POLYGON
+        MENUITEM "Polyline",                    IDM_POLYLINE
+        MENUITEM "Pie",                         IDM_ARC
+        MENUITEM "Free Draw",                   IDM_CUSTOM
+    END
+    POPUP "Help(&H)"
+    BEGIN
+        MENUITEM "Version",                     IDM_VERSION
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_COLORDIALOG DIALOGEX 0, 0, 265, 45
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,153,30,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,30,50,14
+    LTEXT           "Pen/Brush Color ",IDC_COLORLABEL,27,17,54,8
+    LTEXT           "",IDC_COLORBOX,90,18,38,8,SS_NOTIFY | WS_BORDER
+END
+
+IDD_WIDTHDIALOG DIALOGEX 0, 0, 265, 54
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,38,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,38,50,14
+    LTEXT           "Pen Width ",IDC_WIDTHLABEL,33,18,33,8
+    EDITTEXT        IDC_WIDTHBOX,73,15,40,14,ES_AUTOHSCROLL
+END
+
+IDD_POLYGONDIALOG DIALOGEX 0, 0, 265, 54
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,38,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,38,50,14
+    LTEXT           "Edge num(2~100) ",IDC_POLYGONLABEL,33,18,83,28
+    EDITTEXT        IDC_POLYGONBOX,123,15,40,14,ES_AUTOHSCROLL
+END
+
+IDD_POLYLINEDIALOG DIALOGEX 0, 0, 265, 54
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,38,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,38,50,14
+    LTEXT           "Point num(2~100) ",IDC_POLYLINELABEL,33,18,83,28
+    EDITTEXT        IDC_POLYLINEBOX,123,15,40,14,ES_AUTOHSCROLL
+END
+
+IDD_TEXTDIALOG DIALOGEX 0, 0, 265, 54
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,155,38,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,38,50,14
+    LTEXT           "Input Text (up to 500) ",IDC_TEXTLABEL,13,18,200,8
+    EDITTEXT        IDC_TEXTBOX,93,15,150,14,ES_AUTOHSCROLL
+END
+
+IDD_STYLEDIALOG DIALOGEX 0, 0, 309, 120
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,98,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,98,50,14
+    LTEXT           "Pen Style ",IDC_STYLELABEL,31,21,33,8
+    COMBOBOX        IDC_STYLEBOX,75,19,68,90,CBS_DROPDOWNLIST
+END
+
+IDD_BRSTYLEDIALOG DIALOGEX 0, 0, 309, 120
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,98,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,98,50,14
+    LTEXT           "Brush Style ",IDC_BRSTYLELABEL,31,21,33,8
+    COMBOBOX        IDC_BRSTYLEBOX,75,19,68,90,CBS_DROPDOWNLIST
+END
+
+IDD_ROTATEDIALOG DIALOGEX 0, 0, 286, 99
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,175,78,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,229,78,50,14
+    EDITTEXT        IDC_ROTATEBOX,117,34,40,14,ES_AUTOHSCROLL
+    LTEXT           "Angel ",IDC_ROTATELABEL,42,37,70,8
+END
+
+IDD_SETSIZEDIALOG DIALOGEX 0, 0, 213, 85
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,97,62,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,156,62,50,14
+    LTEXT           "Width ",IDC_SETWIDTHLABEL,33,18,33,8
+    EDITTEXT        IDC_SETHEIGHT,72,37,40,14,ES_AUTOHSCROLL
+    LTEXT           "Height ",IDC_SETHEIGHTLABEL,33,38,33,8
+    EDITTEXT        IDC_SETWIDTH,72,16,40,14,ES_AUTOHSCROLL
+END
+
+IDD_ARCDIALOG DIALOGEX 0, 0, 213, 120
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,97,100,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,156,100,50,14
+    LTEXT           "Radius ",IDC_RADIUSLABEL,33,18,50,8
+    EDITTEXT        IDC_STARTABOX,92,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "Start Angle ",IDC_STARTALABEL,33,38,50,8
+    EDITTEXT        IDC_RADIUSBOX,92,16,40,14,ES_AUTOHSCROLL
+    LTEXT           "Sweep Angle ",IDC_SWEEPALABEL,33,58,50,8
+    EDITTEXT        IDC_SWEEPABOX,92,56,40,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_WIDTHDIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 45
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_COLORDIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_WIDTHDIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDA_MAIN ACCELERATORS
+BEGIN
+    "O",            IDM_OPEN,               VIRTKEY, CONTROL
+    "N",            IDM_NEW,                VIRTKEY, CONTROL
+    "S",            IDM_SAVE,               VIRTKEY, CONTROL
+    "Z",            IDM_UNDO,               VIRTKEY, CONTROL
+    "A",            IDM_CLEAR,              VIRTKEY, SHIFT, CONTROL
+    "H",            IDM_FLIPH,              VIRTKEY, SHIFT, CONTROL
+    "V",            IDM_FLIPV,              VIRTKEY, SHIFT, CONTROL
+    "R",            IDM_ROTATION,           VIRTKEY, CONTROL
+    "P",            IDM_PEN,                VIRTKEY, CONTROL
+    "B",            IDM_BRUSH,              VIRTKEY, CONTROL
+    "T",            IDM_TEXT,               VIRTKEY, CONTROL
+    "E",            IDM_ERASER,             VIRTKEY, CONTROL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_TEXT                CURSOR                  "cursor1.cur"
+
+IDC_BRUSH               CURSOR                  "cursor2.cur"
+
+IDC_ERASER              CURSOR                  "cur00001.cur"
+
+IDC_STRAW               CURSOR                  "cur00002.cur"
+
+IDC_BUCKET              CURSOR                  "cur00003.cur"
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
